@@ -70,11 +70,11 @@
                     <div class="custom-dropdown">
                         <input type="text" name="location" id="location" class="form-control location-input" placeholder="Where?" onfocus="showResults()">
                         <ul class="search-results">
-                            <li class="search-item" onclick="chooseLocation('kathmandu')">kathmandu</li>
+                            <!-- <li class="search-item" onclick="chooseLocation('kathmandu')">kathmandu</li>
                             <li class="search-item" onclick="chooseLocation('lalitpur')">lalitpur</li>
                             <li class="search-item" onclick="chooseLocation('bhaktapur')">bhaktapur</li>
                             <li class="search-item" onclick="chooseLocation('pokhara')">pokhara</li>
-                            <li class="search-item" onclick="chooseLocation('dhulikhel')">dhulikhel</li>
+                            <li class="search-item" onclick="chooseLocation('dhulikhel')">dhulikhel</li> -->
                         </ul>
                     </div>
                 </div>
@@ -96,6 +96,36 @@
 </body>
 
 <script>
+
+    let locations = [
+        'kathmandu',
+        'lalitpur',
+        'bhaktapur',
+        'pokhara',
+        'dhulikhel'
+    ]
+
+    document.addEventListener('DOMContentLoaded',() => {
+        setLocations();   
+    })
+
+    const setLocations = () => {
+        let searchList = document.querySelector('.search-results');
+        locations.forEach(location => {
+            let li = document.createElement('LI');
+            li.classList.add('search-item');
+            li.innerHTML = location
+
+            searchList.appendChild(li);
+        })
+        let searchitems = Array.from(document.querySelectorAll('.search-item'));
+        searchitems.forEach(item => {
+            item.addEventListener('click',() => {
+                chooseLocation(item.innerHTML);
+            })
+        })
+    }
+
     const showResults = () => {
         const results = document.querySelector('.search-results');
         if (!results.classList.contains('show')) {
@@ -124,6 +154,41 @@
         input.value = location;
         hideResults();
     }
+
+    const input = document.getElementById('location');
+
+    const debounce = (callback,wait) => {
+        let timeoutId;
+        return (args) => {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                callback(args);
+            },wait)
+        }
+    }
+
+    const onSearch = debounce((input) => { 
+        let value = input.target.value
+        let similarLocations = locations.filter((location) => location.toLowerCase().includes(value.toLowerCase()));
+
+        let searchList = document.querySelector('.search-results');
+        searchList.innerHTML = '';
+        similarLocations.forEach(location => {
+            let li = document.createElement('LI');
+            li.classList.add('search-item');
+            li.innerHTML = location
+
+            searchList.appendChild(li);
+        })
+        let searchitems = Array.from(document.querySelectorAll('.search-item'));
+        searchitems.forEach(item => {
+            item.addEventListener('click',() => {
+                chooseLocation(item.innerHTML);
+            })
+        })
+    },800)
+
+    input.addEventListener('input',onSearch)
 </script>
 
 </html>
