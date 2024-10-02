@@ -47,7 +47,7 @@
     </div>
     <div class="bg-light">
         <section class="popular-shops wrapper">
-            <h2 class="header-text">Popular Coffee Shops</h2>
+            <h2 class="header-text">Coffee Shops</h2>
             <ul class="shop-list">
             </ul>
 
@@ -55,7 +55,7 @@
         </section>
     </div>
 
-    <section class="search-section wrapper">
+    <!-- <section class="search-section wrapper">
         <h2 class="header-text">Search</h2>
         <form class="search-form">
             <div class="custom-dropdown">
@@ -67,13 +67,37 @@
                 </ul>
             </div>
         </form>
-    </section>
+    </section> -->
 
-    <footer class="main-footer wrapper">
-        <div class="company-logo">
-            <span class="logo">Coffee Shops</span>
+    <div class="bg-img">
+        <section class="get-in-touch wrapper">
+            <div class="text-content">
+                <h2 class="header-text">
+                    Want to see your favorite coffee shop here? 
+                </h2>
+            </div>
+            <button type="button" class="btn">Get in touch</button>
+        </section>
+        <div class="img-container">
+            <img src="<?php echo get_template_directory_uri() ?>/assets/coffee-bg.jpg" alt="">
         </div>
-    </footer>
+    </div>
+
+    <div class="bg-dark">
+        <section class="latest-blogs wrapper">
+            <h2 class="header-text">Blogs</h2>
+            <div class="blog-list"></div>
+            <button type="button" class="btn-primary">View More</button>
+        </section>
+    </div>
+
+    <div class="bg-darker">
+        <footer class="main-footer wrapper">
+            <div class="company-logo">
+                <span class="logo">Coffee Shops</span>
+            </div>
+        </footer>
+    </div>
 </body>
 
 <script src="<?php echo get_template_directory_uri(); ?>/script.js"></script>

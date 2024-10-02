@@ -44,9 +44,33 @@ let popularCoffeeShops = [
     },
 ]
 
+let latestBlogs = [
+    {
+        id: 0,
+        name: 'Barista Training',
+    },
+    {
+        id: 1,
+        name: 'Growing Coffee Culture in Nepal',
+    },
+    {
+        id: 2,
+        name: 'Types of coffees',
+    },
+    {
+        id: 3,
+        name: 'Cafinated',
+    },
+    {
+        id: 4,
+        name: 'Brewing your own coffee at home',
+    },
+]
+
 document.addEventListener('DOMContentLoaded', () => {
-    setLocations();
+    // setLocations();
     setPopularShops();
+    setLatestBlogs();
 })
 
 const setLocations = () => {
@@ -88,6 +112,27 @@ const setPopularShops = () => {
         li.appendChild(shoplocation);
 
         shopList.appendChild(li)
+    })
+}
+
+const setLatestBlogs = () => {
+    let blogList = document.querySelector('.blog-list');
+    latestBlogs.forEach((blog) => {
+        let li = document.createElement('LI');
+        li.classList.add('blog-item');
+        let imgContainer = document.createElement('DIV');
+        imgContainer.classList.add('img-container');
+        let img = document.createElement('IMG');
+        img.setAttribute('src',"");
+        imgContainer.appendChild(img);
+        let blogname = document.createElement('DIV');
+        blogname.classList.add('blog-name');
+        blogname.innerHTML = blog.name;
+
+        li.appendChild(imgContainer);
+        li.appendChild(blogname);
+
+        blogList.appendChild(li)
     })
 }
 
