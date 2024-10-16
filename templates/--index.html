@@ -1,17 +1,28 @@
-<?php get_header(); ?>
-<div class="bg-dark">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shops</title>
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="bg-dark">
         <nav class="main-nav wrapper">
             <div class="company-logo">
                 <span class="logo">Coffee Shops</span>
             </div>
-            <?php 
-                wp_nav_menu(
-                    array(
-                        'theme_location' => 'primary-menu',
-                        'menu_class' => 'nav-list'
-                    )
-                );
-            ?>
+            <ul class="nav-list">
+                <li>Home</li>
+                <li>Blog</li>
+                <li>About</li>
+                <li>Contact</li>
+            </ul>
         </nav>
         <section class="main-section wrapper">
             <div class="text-content">
@@ -24,6 +35,7 @@
                     <button class="btn-outline-primary" type="button">
                         Explore
                     </button>
+    
                 </div>
             </div>
 
@@ -79,4 +91,15 @@
         </section>
     </div>
 
-<?php get_footer(); ?>
+    <div class="bg-darker">
+        <footer class="main-footer wrapper">
+            <div class="company-logo">
+                <span class="logo">Coffee Shops</span>
+            </div>
+        </footer>
+    </div>
+</body>
+
+<script src="<?php echo get_template_directory_uri(); ?>/script.js"></script>
+
+</html>
